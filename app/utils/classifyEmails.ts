@@ -60,7 +60,8 @@ export const classifyEmails = async (emails: Email[]) => {
       const prompt = `You're now a detective tasked with categorizing these emails.
        Review the subjects carefully and assign them into the following categories: Important, Promotional, Social, Marketing, and Spam.
         Use your intuition and keen eye to identify the true nature of each email.\n\n${emailSubjects} 
-        just return one word for each emails like Important or Promotional or Social or Marketing or spam with subject name and make sure add subject with the label, i want result like this: subjectName ==> label `;
+        just return one word for each emails like Important or Promotional or Social or Marketing or spam, i want result like this: subjectName ==> label 
+         make sure to give reult like i have specified else my app will not work`;
 
       const result = await chatSession.sendMessage(prompt);
 
@@ -70,8 +71,10 @@ export const classifyEmails = async (emails: Email[]) => {
       const value =
         //@ts-ignore
         classifications.candidates[0].content.parts[0].text?.split("\n");
+      console.log(value);
       //@ts-ignore
       const check = createObjectFromArray(value);
+      console.log(check);
       return check;
     } catch (error: any) {
       console.error("Error:", error.message);

@@ -20,7 +20,9 @@ interface values {
 }
 
 const EmailList: React.FC = () => {
-  const [classifiedEmails, setClassifiedEmails] = useState<any>([]);
+  const [classifiedEmails, setClassifiedEmails] = useState<any>([
+    { name: "havinf some isseu", label: "having some issue regarding api" },
+  ]);
   const [emails, setEmails] = useState<Email[]>([]); // State to hold the list of emails
   const [numEmails, setNumEmails] = useState<number>(10); // State to hold the number of emails to fetch, default is 10
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false); // State to control the sidebar visibility
