@@ -7,7 +7,10 @@ import {
   convertArrayToObject,
   createObjectFromArray,
 } from "./convertArratToObject";
-const genAI = new GoogleGenerativeAI("AIzaSyAoCzx0DlF6rmr7yvv0tt364Q7ktLrUh64");
+
+const GOOGLE_GEMINI_KEY = process.env.NEXT_PUBLIC_GEMINI_KEY as string;
+console.log("gemini key", GOOGLE_GEMINI_KEY);
+const genAI = new GoogleGenerativeAI(GOOGLE_GEMINI_KEY);
 
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
@@ -70,6 +73,8 @@ export const classifyEmails = async (emails: Email[]) => {
         classifications.candidates[0].content.parts[0].text?.split("\n");
       //@ts-ignore
       const check = createObjectFromArray(value);
+      console.log(value);
+      console.log(check);
       return check;
     } catch (error: any) {
       console.error("Error:", error.message);
