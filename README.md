@@ -8,7 +8,7 @@ Ai-Emailio is a web application that allows users to log in using Google OAuth, 
 
 - User Authentication with Google OAuth
 - Fetch emails from Gmail using the Gmail API
-- Classify emails into categories using OpenAI GPT-4
+- Classify emails into categories using Google Gemini
 - Store user data in MongoDB
 
 ## Prerequisites
