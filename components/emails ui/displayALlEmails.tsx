@@ -4,7 +4,6 @@ import axios from "axios";
 import { cleanEmailBody } from "@/app/utils/cleanEmailBody";
 import { ShimmerEffect } from "../shimmer ui/emailsCardShimmerEffect";
 import { classifyEmails } from "@/app/utils/classifyEmails";
-import emails from "@/app/api/emails";
 
 interface Email {
   sender: string;
@@ -36,7 +35,7 @@ const EmailList: React.FC = () => {
     const fetchEmails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/emails/get-all-emails`
+          `http://localhost:4000/api/emails/get-all-emails?limit=50`
         );
         setEmails(response.data.emails); // Set the emails state with the fetched data
 
@@ -114,13 +113,13 @@ const EmailList: React.FC = () => {
               value={numEmails}
               className="morphismEffect text-[20px] font-semibold px-6 py-2 mb-16 outline-none cursor-pointer"
             >
-              <option value={10} className="bg-purple-400">
+              <option value={10} className="morphismEffect">
                 10
               </option>
-              <option value={20} className="bg-purple-400">
+              <option value={20} className="morphismEffect">
                 20
               </option>
-              <option value={30} className="bg-purple-400">
+              <option value={30} className="morphismEffect">
                 30
               </option>
             </select>

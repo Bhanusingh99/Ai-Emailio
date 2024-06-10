@@ -71,10 +71,8 @@ export const classifyEmails = async (emails: Email[]) => {
       const value =
         //@ts-ignore
         classifications.candidates[0].content.parts[0].text?.split("\n");
-      console.log(value);
       //@ts-ignore
       const check = createObjectFromArray(value);
-      console.log(check);
       return check;
     } catch (error: any) {
       console.error("Error:", error.message);

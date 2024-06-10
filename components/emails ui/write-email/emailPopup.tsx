@@ -15,11 +15,37 @@ import { RefreshCcw } from "lucide-react";
 import { generateEmail } from "@/app/utils/generateEmail";
 import { Toaster, toast } from "react-hot-toast";
 import { cleanEmailBody } from "@/app/utils/cleanEmailBody";
+import axios from "axios";
 
 const EmailPopUp = () => {
   const [prompt, setPrompt] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
   const [subject, setSubject] = useState("");
   const [emailBody, setEmailBody] = useState("");
+
+  const handelSendEmails = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/emails/send-email",
+        {
+          emailAddress, // Pass the actual email address variable
+          body: emailBody,
+          subject,
+        }
+      );
+      if (res.status === 200) {
+        toast.success("email send successfully");
+        setEmailAddress("");
+        setEmailBody("");
+        setSubject("");
+      }
+    } catch (error: any) {
+      toast.error(
+        "email not send, something went wrong, please try again later"
+      );
+      // Handle error if needed
+    }
+  };
 
   const handleGenerateEmail = async () => {
     setSubject("");
@@ -86,6 +112,8 @@ const EmailPopUp = () => {
               <div className="py-2 my-1">
                 <p>Email</p>
                 <input
+                  value={emailAddress}
+                  onChange={(e) => setEmailAddress(e.target.value)}
                   type="text"
                   placeholder="recipient@example.com"
                   className="w-full py-2.5 border bg-[#020817] px-4 rounded-[10px] border-gray-700"
@@ -143,7 +171,10 @@ const EmailPopUp = () => {
             <AlertDialogCancel className="morphismEffect">
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction className="morphismEffect">
+            <AlertDialogAction
+              className="morphismEffect"
+              onClick={handelSendEmails}
+            >
               Continue
             </AlertDialogAction>
           </AlertDialogFooter>

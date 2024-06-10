@@ -18,6 +18,7 @@ export const config: NextAuthConfig = {
             "https://www.googleapis.com/auth/userinfo.email",
             "https://www.googleapis.com/auth/userinfo.profile",
             "https://www.googleapis.com/auth/gmail.readonly",
+            "https://www.googleapis.com/auth/gmail.send", // Added scope for sending emails
             "https://www.googleapis.com/auth/calendar",
           ].join(" "),
           response: "code",
@@ -75,7 +76,7 @@ export const config: NextAuthConfig = {
       try {
         // Fetch only email headers initially
         const response = await fetch(
-          "https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=60&metadata.headers",
+          "https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=75&metadata.headers",
           {
             headers: {
               Authorization: `Bearer ${token.access_token}`,
@@ -84,6 +85,7 @@ export const config: NextAuthConfig = {
           }
         );
         const emails = await response.json();
+        const accessToken = token.access_token;
 
         // Collect email details in an array
         const emailDetails: {
@@ -156,7 +158,7 @@ export const config: NextAuthConfig = {
           try {
             const res = await axios.post(
               "http://localhost:4000/api/emails/save-all-emails",
-              { emails: emailDetails }
+              { emails: emailDetails, accessToken }
             );
           } catch (error) {}
         };
