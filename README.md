@@ -65,9 +65,13 @@ make sure to enable Google Generative Language API
 3. **setup enviroment key**
 
    AUTH_GOOGLE_ID=<your-google-client-id>
+
    AUTH_GOOGLE_SECRET=<your-google-client-secret>
+
    AUTH_SECRET=<your-auth-secret>
+
    AUTH_API_KEY=<your-api-key>
+
    NEXT_PUBLIC_GEMINI_KEY=<your-gemini-key>
 
 4. **start the server**
