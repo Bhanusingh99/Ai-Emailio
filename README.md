@@ -2,14 +2,34 @@
 
 ## Overview
 
-Ai-Emailio is a web application that allows users to log in using Google OAuth, fetch their last X emails from Gmail, and classify them into different categories using OpenAI GPT-4. This project is designed for a Full-Stack Engineer Intern Assignment.
+# Introducing Our Email Management Web App! 📧
 
-## Features
+Hey everyone! I am excited to share some cool features of our new web app that makes managing your emails super easy and efficient. Let's dive in! 🌊
 
-- User Authentication with Google OAuth
-- Fetch emails from Gmail using the Gmail API
-- Classify emails into categories using Google Gemini
-- Store user data in MongoDB
+## Send Emails with Ease! ✉️
+
+Quick & Simple Sending: With our app, you can send emails directly. No need to open Gmail separately!
+
+User-Friendly Interface: Just fill out the recipient's email, subject, and message, and hit send. It's that easy!
+
+# Generate Emails Effortlessly! 📝
+
+Prompt-Based Generation: Need to write an email but don't know where to start? Just type a prompt!
+
+AI-Powered Writing: Our app uses the Google Gemini API to craft the perfect email for you.
+
+One-Click Send: Once the email is generated, you can send it with a single click.
+
+# Classify Your Emails Automatically! 📂
+
+Smart Categorization: Our app fetches your emails using the Gmail API and sorts them into categories like:
+Important
+Promotional
+Social
+Marketing
+Spam
+
+Stay Organized: No more sifting through tons of emails. Find what you need quickly and easily!
 
 ## Prerequisites
 
@@ -43,6 +63,7 @@ make sure to enable Google Generative Language API
 ![Alt text](/public/geminiapi.png)
 
 3. **setup enviroment key**
+
    AUTH_GOOGLE_ID=<your-google-client-id>
    AUTH_GOOGLE_SECRET=<your-google-client-secret>
    AUTH_SECRET=<your-auth-secret>
@@ -50,7 +71,9 @@ make sure to enable Google Generative Language API
    NEXT_PUBLIC_GEMINI_KEY=<your-gemini-key>
 
 4. **start the server**
+
    npm run dev
 
 5. **build the project**
+
    npm run build
