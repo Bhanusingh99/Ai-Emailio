@@ -33,14 +33,14 @@ Before you begin, ensure you have met the following requirements:
 3. **Make sure your google workspace should look like this**
    This is an example of a README file with an image.
 
-![Logo](/cred1.png)
-![Logo](/credentials.png)
+![Alt text](/public/cred1.png)
+![Alt text](/public/credentials.png)
 
 make sure to enabled Google Gmail api
-![Logo](/gmailapi.png)
+![Alt text](/public/gmailapi.png)
 
 make sure to enable Google Generative Language API
-![Logo](/geminiapi.png)
+![Alt text](/public/geminiapi.png)
 
 3. **setup enviroment key**
    AUTH_GOOGLE_ID=<your-google-client-id>
