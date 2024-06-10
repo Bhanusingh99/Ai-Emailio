@@ -6,13 +6,51 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  --dot-bg: black;
+  --dot-color: white;
+  --dot-size: 1px;
+  --dot-space: 22px;
+  background: linear-gradient(
+        90deg,
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+}
 .morphismEffect {
-  background: rgba(148, 36, 244, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background: #020817;
+  box-shadow: 0 8px 32px 0 rgba(15, 117, 201, 0.37);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.emailBody {
+  --dot-bg: black;
+  --dot-color: rgba(62, 194, 247, 0.916);
+  --dot-size: 1px;
+  --dot-space: 22px;
+  border-radius: 20px;
+  background: linear-gradient(
+        90deg,
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
 }
 
 .w80 {
@@ -58,4 +96,16 @@
   100% {
     background-position: 1000px 0;
   }
+}
+
+/* --------------------------- Email Toast Notification Styling ------------------ */
+/* toast.css */
+.toast-success {
+  background-color: #020817; /* Green background for success */
+  color: white; /* White text color */
+}
+
+.toast-error {
+  background-color: #f44336; /* Red background for error */
+  color: white; /* White text color */
 }

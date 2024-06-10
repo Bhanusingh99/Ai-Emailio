@@ -14,7 +14,7 @@ const EmailCardShimmerEffect = () => {
 
 export const ShimmerEffect = () => {
   return (
-    <div className="w-full bg-black">
+    <div className="w-full bg-transaprent">
       <div className="w-[90%] mx-auto px-6 py-3 morphismEffect">
         <h3 className="text-center text-[24px] font-semibold text-green-500 max-md:text-[16px]">
           This Website backend is deployed on Render so on first reload it take

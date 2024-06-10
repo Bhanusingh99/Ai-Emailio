@@ -30,12 +30,24 @@ Before you begin, ensure you have met the following requirements:
 2. **Install Dependencies:**
    npm Install
 
+3. **Make sure your google workspace should look like this**
+   This is an example of a README file with an image.
+
+![Logo](/cred1.png)
+![Logo](/credentials.png)
+
+make sure to enabled Google Gmail api
+![Logo](/gmailapi.png)
+
+make sure to enable Google Generative Language API
+![Logo](/geminiapi.png)
+
 3. **setup enviroment key**
-   AUTH_GOOGLE_ID=
-   AUTH_GOOGLE_SECRET=
-   AUTH_SECRET=
-   AUTH_API_KEY=
-   NEXT_PUBLIC_GEMINI_KEY=
+   AUTH_GOOGLE_ID=<your-google-client-id>
+   AUTH_GOOGLE_SECRET=<your-google-client-secret>
+   AUTH_SECRET=<your-auth-secret>
+   AUTH_API_KEY=<your-api-key>
+   NEXT_PUBLIC_GEMINI_KEY=<your-gemini-key>
 
 4. **start the server**
    npm run dev

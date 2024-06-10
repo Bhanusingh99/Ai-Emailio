@@ -1,3 +1,4 @@
+import EmailPopUp from "./emails ui/write-email/emailPopup";
 import { MainNav } from "./main-nav";
 import UserButton from "./user-button";
 
@@ -6,6 +7,7 @@ export default function Header() {
     <header className="w-full border-b-[1.1px] border-gray-700">
       <div className="flex items-center justify-between w-full h-16 max-w-5xl px-4 mx-auto sm:px-6">
         <MainNav />
+        <EmailPopUp />
         <UserButton />
       </div>
     </header>

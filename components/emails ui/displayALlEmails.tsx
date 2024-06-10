@@ -22,6 +22,7 @@ interface values {
 const EmailList: React.FC = () => {
   const [classifiedEmails, setClassifiedEmails] = useState<any>([
     { name: "havinf some isseu", label: "having some issue regarding api" },
+    { name: "havinf some isseu", label: "having some issue regarding api" },
   ]);
   const [emails, setEmails] = useState<Email[]>([]); // State to hold the list of emails
   const [numEmails, setNumEmails] = useState<number>(10); // State to hold the number of emails to fetch, default is 10
@@ -133,17 +134,50 @@ const EmailList: React.FC = () => {
           </div>
 
           {/* List of emails */}
-          {emails.slice(0, numEmails).map((email, index) => (
-            <div
-              key={index}
-              className={`border-[1px] p-4 mb-8 rounded morphismEffect cursor-pointer`}
-              onClick={() => handleEmailClick(email)}
-            >
-              <div className="flex justify-between">
+          <div className="w-full gap-10 flex flex-wrap ">
+            {emails.slice(0, numEmails).map((email, index) => (
+              <div
+                key={index}
+                className={`border-[1px] p-4 mb-8 rounded morphismEffect cursor-pointer max-w-[28rem]`}
+                onClick={() => handleEmailClick(email)}
+              >
+                <div className="flex justify-between">
+                  <p>
+                    <strong>From:</strong>{" "}
+                    {
+                      email.sender
+                        .split("<")
+                        .join("")
+                        .split(">")
+                        .join()
+                        .split(" ")[0]
+                    }
+                  </p>
+                  <p
+                    className={` ${classify ? "flex font-bold" : "hidden"}  ${
+                      email.category?.split("*").join("") === "Important"
+                        ? "text-green-500 "
+                        : `${
+                            email.category?.split("*").join("") === "Marketing"
+                              ? "text-yellow-500"
+                              : email.category?.split("*").join("") === "Spam"
+                              ? "text-red-500"
+                              : email.category?.split("*").join("") ===
+                                "Promotional"
+                              ? "text-yellow-400 font-bold"
+                              : "text-blue-400"
+                          }`
+                    }`}
+                  >
+                    {!email.category?.split("*")
+                      ? "loading..."
+                      : email.category?.split("*")}
+                  </p>
+                </div>
                 <p>
-                  <strong>From:</strong>{" "}
+                  <strong>To:</strong>{" "}
                   {
-                    email.sender
+                    email.recipient
                       .split("<")
                       .join("")
                       .split(">")
@@ -151,43 +185,12 @@ const EmailList: React.FC = () => {
                       .split(" ")[0]
                   }
                 </p>
-                <p
-                  className={` ${classify ? "flex font-bold" : "hidden"}  ${
-                    email.category?.split("*").join("") === "Important"
-                      ? "text-green-500 "
-                      : `${
-                          email.category?.split("*").join("") === "Marketing"
-                            ? "text-yellow-500"
-                            : email.category?.split("*").join("") === "Spam"
-                            ? "text-red-500"
-                            : email.category?.split("*").join("") ===
-                              "Promotional"
-                            ? "text-yellow-400 font-bold"
-                            : ""
-                        }`
-                  }`}
-                >
-                  {!email.category?.split("*")
-                    ? "loading"
-                    : email.category?.split("*")}
+                <p className="line-clamp-2">
+                  <strong>Subject:</strong> {email.subject}
                 </p>
               </div>
-              <p>
-                <strong>To:</strong>{" "}
-                {
-                  email.recipient
-                    .split("<")
-                    .join("")
-                    .split(">")
-                    .join()
-                    .split(" ")[0]
-                }
-              </p>
-              <p>
-                <strong>Subject:</strong> {email.subject}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
 
           {/* Sidebar for displaying the selected email */}
           {isSidebarOpen && selectedEmail && (
